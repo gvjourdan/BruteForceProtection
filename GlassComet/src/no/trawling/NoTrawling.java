@@ -28,6 +28,7 @@ public class NoTrawling {
 			e.printStackTrace();
 		}
 		
+		//TODO handle empty string in config file
 		int windowSizeId = Integer.parseInt(prop.getProperty("windowSizeId",defaultWindowSize));
 		int maxHitsId = Integer.parseInt(prop.getProperty("maxHitsId",defaultMaxHits));
 		int timePenaltyId = Integer.parseInt(prop.getProperty("timePenaltyId",defaultTimePenalty));
