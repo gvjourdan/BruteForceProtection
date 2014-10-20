@@ -14,9 +14,9 @@ public class NoTrawling {
 	private StringDirection sqanswer;
 	
 	public NoTrawling(){
-		int defaultWindowSize = 5;
-		int defaultMaxHits = 5;
-		int defaultTimePenalty = 5;
+		String defaultWindowSize = "5";
+		String defaultMaxHits = "5";
+		String defaultTimePenalty = "5";
 		Properties prop = new Properties();
 		String propFileName = "config.properties";
  
@@ -28,21 +28,21 @@ public class NoTrawling {
 			e.printStackTrace();
 		}
 		
-		int windowSizeId = Integer.parseInt(prop.getProperty("windowSizeId"),defaultWindowSize);
-		int maxHitsId = Integer.parseInt(prop.getProperty("maxHitsId"),defaultMaxHits);
-		int timePenaltyId = Integer.parseInt(prop.getProperty("timePenaltyId"),defaultTimePenalty);
-		int windowSizePassword = Integer.parseInt(prop.getProperty("windowSizePassword"),defaultWindowSize);
-		int maxHitsPassword = Integer.parseInt(prop.getProperty("maxHitsPassword"),defaultMaxHits);
-		int timePenaltyPassword = Integer.parseInt(prop.getProperty("timePenaltyPassword"),defaultTimePenalty);
-		int windowSizeUsername = Integer.parseInt(prop.getProperty("windowSizeUsername"),defaultWindowSize);
-		int maxHitsUsername = Integer.parseInt(prop.getProperty("maxHitsUsername"),defaultMaxHits);
-		int timePenaltyUsername = Integer.parseInt(prop.getProperty("timePenaltyUsername"),defaultTimePenalty);
-		int windowSizeIp = Integer.parseInt(prop.getProperty("windowSizeIp"),defaultWindowSize);
-		int maxHitsIp = Integer.parseInt(prop.getProperty("maxHitsIp"),defaultMaxHits);
-		int timePenaltyIp = Integer.parseInt(prop.getProperty("timePenaltyIp"),defaultTimePenalty);
-		int windowSizeSqanswer = Integer.parseInt(prop.getProperty("windowSizeSqanswer"),defaultWindowSize);
-		int maxHitsSqanswer = Integer.parseInt(prop.getProperty("maxHitsSqanswer"),defaultMaxHits);
-		int timePenaltySqanswer = Integer.parseInt(prop.getProperty("timePenaltySqanswer"),defaultTimePenalty);
+		int windowSizeId = Integer.parseInt(prop.getProperty("windowSizeId",defaultWindowSize));
+		int maxHitsId = Integer.parseInt(prop.getProperty("maxHitsId",defaultMaxHits));
+		int timePenaltyId = Integer.parseInt(prop.getProperty("timePenaltyId",defaultTimePenalty));
+		int windowSizePassword = Integer.parseInt(prop.getProperty("windowSizePassword",defaultWindowSize));
+		int maxHitsPassword = Integer.parseInt(prop.getProperty("maxHitsPassword",defaultMaxHits));
+		int timePenaltyPassword = Integer.parseInt(prop.getProperty("timePenaltyPassword",defaultTimePenalty));
+		int windowSizeUsername = Integer.parseInt(prop.getProperty("windowSizeUsername",defaultWindowSize));
+		int maxHitsUsername = Integer.parseInt(prop.getProperty("maxHitsUsername",defaultMaxHits));
+		int timePenaltyUsername = Integer.parseInt(prop.getProperty("timePenaltyUsername",defaultTimePenalty));
+		int windowSizeIp = Integer.parseInt(prop.getProperty("windowSizeIp",defaultWindowSize));
+		int maxHitsIp = Integer.parseInt(prop.getProperty("maxHitsIp",defaultMaxHits));
+		int timePenaltyIp = Integer.parseInt(prop.getProperty("timePenaltyIp",defaultTimePenalty));
+		int windowSizeSqanswer = Integer.parseInt(prop.getProperty("windowSizeSqanswer",defaultWindowSize));
+		int maxHitsSqanswer = Integer.parseInt(prop.getProperty("maxHitsSqanswer",defaultMaxHits));
+		int timePenaltySqanswer = Integer.parseInt(prop.getProperty("timePenaltySqanswer",defaultTimePenalty));
 		
 		id = new IntegerDirection(windowSizeId,maxHitsId,timePenaltyId);
 		password = new StringDirection(windowSizePassword,maxHitsPassword,timePenaltyPassword);
