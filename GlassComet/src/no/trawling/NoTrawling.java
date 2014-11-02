@@ -52,6 +52,49 @@ public class NoTrawling {
 		sqanswer = new StringDirection(windowSizeSqanswer,maxHitsSqanswer,timePenaltySqanswer);
 	}
 	
+	/**
+	 * Checks if any of the supplied ip address, password and username is blocked.
+	 * 
+	 * @param ip
+	 * @param password
+	 * @param userName
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
+	public boolean isBlockedIpPasswordUsername(String ip, String password, String userName){
+		boolean isBlocked = false;
+		try {
+			isBlocked = this.password.isBlocked(userName) || this.username.isBlocked(password) || this.ip.isBlocked(ip);
+		} catch (IllegalStateException | InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isBlocked;
+	}
+	
+	/**
+	 * Checks if either of the supplied ip address and password reset security question answer is blocked.
+	 * 
+	 * @param ip
+	 * @param answer
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
+	public boolean isBlockedIpSecurityQuestionAnswer(String ip, String answer){
+		boolean isBlocked = false;
+		try {
+			isBlocked = this.ip.isBlocked(ip) || this.sqanswer.isBlocked(answer);
+		} catch (IllegalStateException | InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isBlocked;
+	}
+	
+	/**
+	 * Checks if the supplied password is blocked.
+	 * 
+	 * @param key
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
 	public boolean isBlockedPassword(String key){
 		boolean isBlocked = false;
 		try {
@@ -63,6 +106,12 @@ public class NoTrawling {
 		return isBlocked;
 	}
 	
+	/**
+	 * Checks if the supplied username is blocked.
+	 * 
+	 * @param key
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
 	public boolean isBlockedUsername(String key){
 		boolean isBlocked = false;
 		try {
@@ -74,6 +123,12 @@ public class NoTrawling {
 		return isBlocked;
 	}
 	
+	/**
+	 * Checks if the supplied ip address is blocked.
+	 * 
+	 * @param key
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
 	public boolean isBlockedIp(String key){
 		boolean isBlocked = false;
 		try {
@@ -85,6 +140,12 @@ public class NoTrawling {
 		return isBlocked;
 	}
 	
+	/**
+	 * Checks if the supplied id is blocked.
+	 * 
+	 * @param key
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
 	public boolean isBlockedId(int key){
 		boolean isBlocked = false;
 		try {
@@ -96,6 +157,12 @@ public class NoTrawling {
 		return isBlocked;
 	}
 	
+	/**
+	 * Checks if the supplied password reset question answer is blocked.
+	 * 
+	 * @param key
+	 * @return boolean: True if any of parameters are blocked, False if all parameters are not blocked
+	 */
 	public boolean isBlockedSecurityQuestionAnswer(String key){
 		boolean isBlocked = false;
 		try {
