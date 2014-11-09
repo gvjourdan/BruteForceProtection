@@ -71,7 +71,7 @@ public class NoTrawling {
 		};
 
 		GarbageCleanup garbageCleanup = new GarbageCleanup();
-		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInHours, garbageCollectTimeInHours, MINUTES);
+		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInHours, garbageCollectTimeInHours, HOURS);
 	}
 	
 	/**
