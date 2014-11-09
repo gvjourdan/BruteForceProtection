@@ -6,9 +6,9 @@ import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import static java.util.concurrent.TimeUnit.*;
-
 import org.eclipse.jdt.core.compiler.InvalidInputException;
+
+import static java.util.concurrent.TimeUnit.*;
 
 public class NoTrawling {
 	private IntegerDirection id;
@@ -59,9 +59,18 @@ public class NoTrawling {
 		sqanswer = new StringDirection(windowSizeSqanswer,maxHitsSqanswer,timePenaltySqanswer);
 
 		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		
-		GarbageCleanup garbageCleanup = new GarbageCleanup(id, password, username, ip, sqanswer);
-		
+
+		class GarbageCleanup implements Runnable {
+			public void run() {
+				id.cleanUp();
+				password.cleanUp();
+				username.cleanUp();
+				ip.cleanUp();
+				sqanswer.cleanUp();
+			}
+		};
+
+		GarbageCleanup garbageCleanup = new GarbageCleanup();
 		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInHours, garbageCollectTimeInHours, MINUTES);
 	}
 	
