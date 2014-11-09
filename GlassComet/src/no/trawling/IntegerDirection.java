@@ -1,6 +1,9 @@
 package no.trawling;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
@@ -32,6 +35,20 @@ public class IntegerDirection extends Direction {
 			countBlocks += 1;
 		}
 		return isBlocked;
+	}
+	
+	public void cleanUp(){
+		Iterator<Entry<Integer, Long>> it = values.entrySet().iterator();
+		Long currentTime = System.currentTimeMillis() / 1000l;
+		Long windowTail = currentTime - windowSize;
+		
+		while (it.hasNext()) {
+	        Map.Entry<Integer, Long> pairs = (Map.Entry<Integer, Long>)it.next();
+	        if ((Long)pairs.getValue() < windowTail){
+	        	values.remove(pairs.getKey());
+	        }
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }
 	}
 	
 	private boolean updateRecord(Integer key){

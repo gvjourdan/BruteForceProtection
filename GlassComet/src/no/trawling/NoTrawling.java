@@ -3,6 +3,10 @@ package no.trawling;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
+import static java.util.concurrent.TimeUnit.*;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
@@ -17,9 +21,11 @@ public class NoTrawling {
 		String defaultWindowSize = "5";
 		String defaultMaxHits = "5";
 		String defaultTimePenalty = "5";
+		String defaultGarbageCollectTimeInHours = "4";
+		
 		Properties prop = new Properties();
 		String propFileName = "config.properties";
- 
+		
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 		try {
 			prop.load(inputStream);
@@ -44,12 +50,19 @@ public class NoTrawling {
 		int windowSizeSqanswer = Integer.parseInt(prop.getProperty("windowSizeSqanswer",defaultWindowSize));
 		int maxHitsSqanswer = Integer.parseInt(prop.getProperty("maxHitsSqanswer",defaultMaxHits));
 		int timePenaltySqanswer = Integer.parseInt(prop.getProperty("timePenaltySqanswer",defaultTimePenalty));
+		int garbageCollectTimeInHours = Integer.parseInt(prop.getProperty("garbageCollectTimeInHours",defaultGarbageCollectTimeInHours));
 		
 		id = new IntegerDirection(windowSizeId,maxHitsId,timePenaltyId);
 		password = new StringDirection(windowSizePassword,maxHitsPassword,timePenaltyPassword);
 		username = new StringDirection(windowSizeUsername,maxHitsUsername,timePenaltyUsername);
 		ip = new StringDirection(windowSizeIp,maxHitsIp,timePenaltyIp);
 		sqanswer = new StringDirection(windowSizeSqanswer,maxHitsSqanswer,timePenaltySqanswer);
+
+		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		
+		GarbageCleanup garbageCleanup = new GarbageCleanup(id, password, username, ip, sqanswer);
+		
+		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInHours, garbageCollectTimeInHours, MINUTES);
 	}
 	
 	/**
