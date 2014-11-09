@@ -21,7 +21,9 @@ public class NoTrawling {
 		String defaultWindowSize = "5";
 		String defaultMaxHits = "5";
 		String defaultTimePenalty = "5";
-		String defaultGarbageCollectTimeInHours = "4";
+
+		//four hours
+		String defaultGarbageCollectTimeInMinutes = "240";
 		
 		Properties prop = new Properties();
 		String propFileName = "config.properties";
@@ -50,7 +52,7 @@ public class NoTrawling {
 		int windowSizeSqanswer = Integer.parseInt(prop.getProperty("windowSizeSqanswer",defaultWindowSize));
 		int maxHitsSqanswer = Integer.parseInt(prop.getProperty("maxHitsSqanswer",defaultMaxHits));
 		int timePenaltySqanswer = Integer.parseInt(prop.getProperty("timePenaltySqanswer",defaultTimePenalty));
-		int garbageCollectTimeInHours = Integer.parseInt(prop.getProperty("garbageCollectTimeInHours",defaultGarbageCollectTimeInHours));
+		int garbageCollectTimeInMinutes = Integer.parseInt(prop.getProperty("garbageCollectTimeInMinutes",defaultGarbageCollectTimeInMinutes));
 		
 		id = new IntegerDirection(windowSizeId,maxHitsId,timePenaltyId);
 		password = new StringDirection(windowSizePassword,maxHitsPassword,timePenaltyPassword);
@@ -71,7 +73,7 @@ public class NoTrawling {
 		};
 
 		GarbageCleanup garbageCleanup = new GarbageCleanup();
-		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInHours, garbageCollectTimeInHours, HOURS);
+		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInMinutes, garbageCollectTimeInMinutes, MINUTES);
 	}
 	
 	/**
