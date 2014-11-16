@@ -3,15 +3,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import no.trawling.StringDirection;
-
-import org.eclipse.jdt.core.compiler.InvalidInputException;
-
-import sun.net.www.http.HttpClient;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 

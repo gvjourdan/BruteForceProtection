@@ -12,16 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
-import no.trawling.*;
-
 /**
  * Servlet implementation class GlassComet
  */
 @WebServlet("/GlassComet")
 public class GlassComet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private int hitCount = 0;
-	private int blockCount = 0;
 	private long startTime;
 	private StringDirection passwords;
     /**

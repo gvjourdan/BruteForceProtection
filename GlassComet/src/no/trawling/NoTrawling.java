@@ -16,6 +16,7 @@ public class NoTrawling {
 	private StringDirection username;
 	private StringDirection ip;
 	private StringDirection sqanswer;
+	HtmlContent stats;
 	
 	public NoTrawling(){
 		String defaultWindowSize = "5";
@@ -74,6 +75,15 @@ public class NoTrawling {
 
 		GarbageCleanup garbageCleanup = new GarbageCleanup();
 		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInMinutes, garbageCollectTimeInMinutes, MINUTES);
+		stats = new HtmlContent();
+		
+		class UpdateStats implements Runnable {
+			public void run() {
+				stats.display(username);
+			}
+		};
+		UpdateStats statsScheduler = new UpdateStats();
+		scheduler.scheduleAtFixedRate(statsScheduler, 1, 1, MINUTES);
 	}
 	
 	/**
