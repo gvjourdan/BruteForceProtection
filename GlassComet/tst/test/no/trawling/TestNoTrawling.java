@@ -6,7 +6,23 @@ public class TestNoTrawling {
 	public static void main(String [] args){
 		
 		NoTrawling noTrawling = new NoTrawling();
-		System.out.println(noTrawling.isBlockedUsername("test1"));
-		
+		while (true){
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			System.out.println(noTrawling.isBlockedUsername("test1"));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

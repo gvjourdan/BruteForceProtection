@@ -1,19 +1,19 @@
 package no.trawling;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
 public class StringDirection extends Direction{
 	
-	HashMap<String, Long> values;
+	ConcurrentHashMap<String, Long> values;
 	
 	public StringDirection(int windowSize, int maxHits, int timePenalty){
 		
-		values = new HashMap<String,Long>();
+		values = new ConcurrentHashMap<String,Long>();
 		this.windowSize = windowSize;
 		this.maxHits = maxHits;
 		this.timePenalty = timePenalty;
