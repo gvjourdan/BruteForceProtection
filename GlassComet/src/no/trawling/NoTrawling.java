@@ -83,7 +83,7 @@ public class NoTrawling {
 			}
 		};
 		UpdateStats statsScheduler = new UpdateStats();
-		scheduler.scheduleAtFixedRate(statsScheduler, 1, 1, MINUTES);
+		scheduler.scheduleAtFixedRate(statsScheduler, 5, 5, SECONDS);
 	}
 	
 	/**
