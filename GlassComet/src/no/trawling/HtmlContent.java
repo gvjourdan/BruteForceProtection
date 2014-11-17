@@ -10,33 +10,53 @@ class HtmlContent extends JFrame {
 		          "<head><title>" + "GlassComet" + 
 				  "</title></head>\n" +
 		          "<body bgcolor=\"#f0f0f0\">\n" +
-		          "<h1 align=\"center\">" + "Hit count:" + "</h1>\n" +
-		          "<h2 align=\"center\">" + 0 + "</h2>\n" +
-		          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
-		          "<h2 align=\"center\">" + 0 + "</h2>\n" +
-		          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
-		          "<h2 align=\"center\">" + 0 + "</h2>\n" +
-		          "</body></html>";
+		          "<h1 align=\"center\">" + "Hit count: " + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Blocked count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Allowed count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Hit count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Blocked count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Allowed count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Hit count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Blocked count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Allowed count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Hit count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Blocked count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Allowed count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Hit count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Blocked count:" + 0 + "</h1>\n" +
+		          "<h1 align=\"center\">" + "Allowed count:" + 0 + "</h1>\n" +
+		          "</body>"+
+		          "</html>";
 				JEditorPane ed1=new JEditorPane("text/html",html); 
 				add(ed1);
 				setVisible(true); 
 				setSize(600,600); 
 				setDefaultCloseOperation(HIDE_ON_CLOSE);
 	}
-	
-	void display(StringDirection password){
+
+	void display(IntegerDirection id, StringDirection password, StringDirection username, StringDirection ip, StringDirection sqanswer){
 		try { 
 			String html = "<html>\n" +
 	          "<head><title>" + "GlassComet" + 
 			  "</title></head>\n" +
 	          "<body bgcolor=\"#f0f0f0\">\n" +
-	          "<h1 align=\"center\">" + "Hit count:" + "</h1>\n" +
-	          "<h2 align=\"center\">" + password.getHitsCount() + "</h2>\n" +
-	          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
-	          "<h2 align=\"center\">" + password.getBlocksCount() + "</h2>\n" +
-	          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
-	          "<h2 align=\"center\">" + (password.getHitsCount() - password.getBlocksCount()) + "</h2>\n" +
-	          "</body></html>";
+	          "<h1 align=\"center\">" + "Hit count: " + id.getHitsCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Blocked count:" + id.getBlocksCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Allowed count:" + (id.getHitsCount() - id.getBlocksCount()) + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Hit count:" + password.getHitsCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Blocked count:" + password.getBlocksCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Allowed count:" + (password.getHitsCount() - password.getBlocksCount()) + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Hit count:" + username.getHitsCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Blocked count:" + username.getBlocksCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Allowed count:" + (username.getHitsCount() - username.getBlocksCount()) + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Hit count:" + ip.getHitsCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Blocked count:" + ip.getBlocksCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Allowed count:" + (ip.getHitsCount() - ip.getBlocksCount()) + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Hit count:" + sqanswer.getHitsCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Blocked count:" + sqanswer.getBlocksCount() + "</h1>\n" +
+	          "<h1 align=\"center\">" + "Allowed count:" + (sqanswer.getHitsCount() - sqanswer.getBlocksCount()) + "</h1>\n" +
+	          "</body>"+
+	          "</html>";
 			JEditorPane ed1=new JEditorPane("text/html",html); 
 			this.getContentPane().removeAll();
 			add(ed1);

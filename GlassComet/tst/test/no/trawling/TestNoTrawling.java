@@ -8,6 +8,13 @@ public class TestNoTrawling {
 		NoTrawling noTrawling = new NoTrawling();
 		while (true){
 			noTrawling.isBlockedUsername("test1");
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 	}
 }

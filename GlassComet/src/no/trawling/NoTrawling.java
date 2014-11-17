@@ -16,7 +16,7 @@ public class NoTrawling {
 	private StringDirection username;
 	private StringDirection ip;
 	private StringDirection sqanswer;
-	HtmlContent stats;
+	private HtmlContent stats;
 	
 	public NoTrawling(){
 		String defaultWindowSize = "5";
@@ -79,7 +79,7 @@ public class NoTrawling {
 		
 		class UpdateStats implements Runnable {
 			public void run() {
-				stats.display(username);
+				stats.display(id, password, username, ip, sqanswer);
 			}
 		};
 		UpdateStats statsScheduler = new UpdateStats();
