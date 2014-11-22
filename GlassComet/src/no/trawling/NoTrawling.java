@@ -24,7 +24,7 @@ public class NoTrawling {
 		String defaultTimePenalty = "5";
 
 		//four hours
-		String defaultGarbageCollectTimeInMinutes = "240";
+		String defaultGarbageCollectTimeInSeconds = "5";
 		
 		Properties prop = new Properties();
 		String propFileName = "config.properties";
@@ -53,7 +53,7 @@ public class NoTrawling {
 		int windowSizeSqanswer = Integer.parseInt(prop.getProperty("windowSizeSqanswer",defaultWindowSize));
 		int maxHitsSqanswer = Integer.parseInt(prop.getProperty("maxHitsSqanswer",defaultMaxHits));
 		int timePenaltySqanswer = Integer.parseInt(prop.getProperty("timePenaltySqanswer",defaultTimePenalty));
-		int garbageCollectTimeInMinutes = Integer.parseInt(prop.getProperty("garbageCollectTimeInMinutes",defaultGarbageCollectTimeInMinutes));
+		int garbageCollectTimeInSeconds = Integer.parseInt(prop.getProperty("garbageCollectTimeInSeconds",defaultGarbageCollectTimeInSeconds));
 		
 		id = new IntegerDirection(windowSizeId,maxHitsId,timePenaltyId);
 		password = new StringDirection(windowSizePassword,maxHitsPassword,timePenaltyPassword);
@@ -74,7 +74,7 @@ public class NoTrawling {
 		};
 
 		GarbageCleanup garbageCleanup = new GarbageCleanup();
-		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInMinutes, garbageCollectTimeInMinutes, MINUTES);
+		scheduler.scheduleAtFixedRate(garbageCleanup, garbageCollectTimeInSeconds, garbageCollectTimeInSeconds, SECONDS);
 		stats = new HtmlContent();
 		
 		class UpdateStats implements Runnable {

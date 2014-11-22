@@ -61,8 +61,12 @@ public class IntegerDirection extends Direction {
 		
 		if (values.containsKey(key)){
 			lastHit = values.get(key);
+			if (null == lastHit){
+				values.put(key, currentTime - windowSize + windowSlide);
+				isBlocked = false;
+			}
 			//Tile is still within window
-			if (lastHit > windowTail && ((lastHit + windowSlide) < currentTime)){
+			else if (lastHit > windowTail && ((lastHit + windowSlide) < currentTime)){
 				values.put(key, lastHit + windowSlide);
 				isBlocked = false;
 			}
