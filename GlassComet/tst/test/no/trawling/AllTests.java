@@ -331,4 +331,60 @@ public class AllTests {
 		double hitsPerSecond = numberOfHits/difference;
 		assertTrue(hitsPerSecond>minumumPerformance);
 	}
+	
+	@Test
+	public void testStringDirectionCleanup(){
+		StringDirection password = new StringDirection(5, 5, 5);
+		int x = 0;
+		while (x++ < 7){
+			try {
+				password.isBlocked("TestPassword");
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidInputException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		password.cleanUp();
+		assertEquals(1, password.getNumberOfRecords());
+		//TODO Why 11 seconds???
+		try {
+			Thread.sleep(11000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		password.cleanUp();
+		assertEquals(0, password.getNumberOfRecords());
+	}
+	
+	@Test
+	public void testIntegerDirectionCleanup(){
+		IntegerDirection password = new IntegerDirection(5, 5, 5);
+		int x = 0;
+		while (x++ < 7){
+			try {
+				password.isBlocked(123456);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidInputException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		password.cleanUp();
+		assertEquals(1, password.getNumberOfRecords());
+		//TODO Why 11 seconds???
+		try {
+			Thread.sleep(11000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		password.cleanUp();
+		assertEquals(0, password.getNumberOfRecords());
+	}
 }

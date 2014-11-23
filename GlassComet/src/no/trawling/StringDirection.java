@@ -19,6 +19,10 @@ public class StringDirection extends Direction{
 		this.timePenalty = timePenalty;
 	}
 	
+	public int getNumberOfRecords(){
+		return values.size();
+	}
+	
 	public boolean isBlocked(String key) throws InvalidInputException, IllegalStateException{
 		boolean isBlocked = false;
 		if (0 == windowSize || 0 == maxHits){
@@ -46,8 +50,8 @@ public class StringDirection extends Direction{
 	        Map.Entry<String, Long> pairs = (Map.Entry<String, Long>)it.next();
 	        if ((Long)pairs.getValue() < windowTail){
 	        	values.remove(pairs.getKey());
+		        it.remove(); // avoids a ConcurrentModificationException
 	        }
-	        it.remove(); // avoids a ConcurrentModificationException
 	    }
 	}
 	
@@ -67,7 +71,7 @@ public class StringDirection extends Direction{
 				isBlocked = false;
 			}
 			//Tile is still within window
-			else if (lastHit + windowSlide > windowTail && ((lastHit + windowSlide) < currentTime)){
+			else if (lastHit > windowTail && ((lastHit + windowSlide) < currentTime)){
 				values.put(key, lastHit + windowSlide);
 				isBlocked = false;
 			}
@@ -83,7 +87,7 @@ public class StringDirection extends Direction{
 			//will be blocked
 			else{
 				values.put(key, currentTime + timePenalty);
-				isBlocked = false;
+				isBlocked = true;
 			}
 		}
 		else{
