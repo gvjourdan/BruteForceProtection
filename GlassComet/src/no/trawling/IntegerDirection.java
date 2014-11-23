@@ -66,22 +66,27 @@ public class IntegerDirection extends Direction {
 				isBlocked = false;
 			}
 			//Tile is still within window
-			else if (lastHit > windowTail && ((lastHit + windowSlide) < currentTime)){
+			else if (lastHit + windowSlide > windowTail && ((lastHit + windowSlide) < currentTime)){
 				values.put(key, lastHit + windowSlide);
 				isBlocked = false;
 			}
 			//Tile is behind the window
 			else if (lastHit <= windowTail){
-				values.put(key, (currentTime - windowSize) + windowSlide);
+				values.put(key, currentTime - windowSize + windowSlide);
 				isBlocked = false;
 			}
 			//Tile is past the window
-			else{
+			else if(lastHit > currentTime){
 				isBlocked = true;
+			}
+			//will be blocked
+			else{
+				values.put(key, currentTime + timePenalty);
+				isBlocked = false;
 			}
 		}
 		else{
-			values.put(key, currentTime);
+			values.put(key, currentTime - windowSize + windowSlide);
 			isBlocked = false;
 		}
 		
