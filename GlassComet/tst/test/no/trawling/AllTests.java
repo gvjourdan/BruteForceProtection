@@ -1,6 +1,10 @@
 package test.no.trawling;
 
 import static org.junit.Assert.*;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
+
 import no.trawling.*;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
@@ -222,5 +226,109 @@ public class AllTests {
 			e.printStackTrace();
 		}
 		assertEquals(true, blocked);
+	}
+	
+	@Test
+	public void testIntegerDirectionPerformanceSameEntry(){
+		//Minumum hits/second acceptable for a production service
+		int minumumPerformance = 5000;
+		
+		int numberOfHits = 50000000;
+		IntegerDirection noTrawling = new IntegerDirection(10, 10, 10);
+		ThreadMXBean threadMXBean=ManagementFactory.getThreadMXBean();
+		long startTime = threadMXBean.getCurrentThreadCpuTime();
+		for (int i = 0; i < numberOfHits; i++) {
+		try {
+			noTrawling.isBlocked(123456);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		long endTime = threadMXBean.getCurrentThreadCpuTime();
+		double difference = (endTime - startTime) / 1000000000.0;
+		double hitsPerSecond = numberOfHits/difference;
+		assertTrue(hitsPerSecond>minumumPerformance);
+	}
+	
+	@Test
+	public void testStringDirectionPerformanceSameEntry(){
+		//Minumum hits/second acceptable for a production service
+		int minumumPerformance = 5000;
+		
+		int numberOfHits = 50000000;
+		StringDirection noTrawling = new StringDirection(10, 10, 10);
+		ThreadMXBean threadMXBean=ManagementFactory.getThreadMXBean();
+		long startTime = threadMXBean.getCurrentThreadCpuTime();
+		for (int i = 0; i < numberOfHits; i++) {
+		try {
+			noTrawling.isBlocked("123456");
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		long endTime = threadMXBean.getCurrentThreadCpuTime();
+		double difference = (endTime - startTime) / 1000000000.0;
+		double hitsPerSecond = numberOfHits/difference;
+		assertTrue(hitsPerSecond>minumumPerformance);
+	}
+	
+	@Test
+	public void testIntegerDirectionPerformanceDifferentEntry(){
+		//Minumum hits/second acceptable for a production service
+		int minumumPerformance = 5000;
+		
+		int numberOfHits = 5000000;
+		IntegerDirection noTrawling = new IntegerDirection(10, 10, 10);
+		ThreadMXBean threadMXBean=ManagementFactory.getThreadMXBean();
+		long startTime = threadMXBean.getCurrentThreadCpuTime();
+		for (int i = 0; i < numberOfHits; i++) {
+		try {
+			noTrawling.isBlocked(123456 + i);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		long endTime = threadMXBean.getCurrentThreadCpuTime();
+		double difference = (endTime - startTime) / 1000000000.0;
+		double hitsPerSecond = numberOfHits/difference;
+		assertTrue(hitsPerSecond>minumumPerformance);
+	}
+	
+	@Test
+	public void testStringDirectionPerformanceDifferentEntry(){
+		//Minumum hits/second acceptable for a production service
+		int minumumPerformance = 5000;
+		
+		int numberOfHits = 5000000;
+		StringDirection noTrawling = new StringDirection(10, 10, 10);
+		ThreadMXBean threadMXBean=ManagementFactory.getThreadMXBean();
+		long startTime = threadMXBean.getCurrentThreadCpuTime();
+		for (int i = 0; i < numberOfHits; i++) {
+		try {
+			noTrawling.isBlocked("123456" + i);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		long endTime = threadMXBean.getCurrentThreadCpuTime();
+		double difference = (endTime - startTime) / 1000000000.0;
+		double hitsPerSecond = numberOfHits/difference;
+		assertTrue(hitsPerSecond>minumumPerformance);
 	}
 }
