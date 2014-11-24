@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import no.trawling.library.IntegerDirection;
-import no.trawling.library.NoTrawling;
 import no.trawling.library.StringDirection;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
@@ -231,14 +230,44 @@ public class GlassComet extends HttpServlet {
           "<html>\n" +
           "<head><title>" + "GlassComet" + "</title></head>\n" +
           "<body bgcolor=\"#f0f0f0\">\n" +
-          "<h1 align=\"center\">" + "Hit count:" + "</h1>\n" +
+          "<h1 align=\"center\">" + "Password hit count:" + "</h1>\n" +
           "<h2 align=\"center\">" + password.getHitsCount() + "</h2>\n" +
           "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
           "<h2 align=\"center\">" + password.getBlocksCount() + "</h2>\n" +
           "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
           "<h2 align=\"center\">" + (password.getHitsCount() - password.getBlocksCount()) + "</h2>\n" +
+          
+          "<h1 align=\"center\">" + "Id hit count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + id.getHitsCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + id.getBlocksCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + (id.getHitsCount() - id.getBlocksCount()) + "</h2>\n" +
+          
+          "<h1 align=\"center\">" + "Username hit count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + username.getHitsCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + username.getBlocksCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + (username.getHitsCount() - username.getBlocksCount()) + "</h2>\n" +
+          
+          "<h1 align=\"center\">" + "Security question answer hit count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + sqanswer.getHitsCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + sqanswer.getBlocksCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + (sqanswer.getHitsCount() - sqanswer.getBlocksCount()) + "</h2>\n" +
+          
+          "<h1 align=\"center\">" + "Ip hit count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + ip.getHitsCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Blocked count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + ip.getBlocksCount() + "</h2>\n" +
+          "<h1 align=\"center\">" + "Allowed count:" + "</h1>\n" +
+          "<h2 align=\"center\">" + (ip.getHitsCount() - ip.getBlocksCount()) + "</h2>\n" +
+          
           "<h1 align=\"center\">" + "Server Up Time (Seconds):" + "</h1>\n" +
           "<h2 align=\"center\">" + (System.currentTimeMillis() / 1000l - startTime) + "</h2>\n" +
+          
           "</body></html>");
 	}
 
@@ -247,16 +276,57 @@ public class GlassComet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password = request.getParameter("password");
+		String ip = request.getParameter("ip");
+		String username = request.getParameter("username");
+		Integer id = Integer.getInteger(request.getParameter("id"));
+		String sqanswer = request.getParameter("sqanswer");
+		
 		boolean isBlocked = false;
-		try {
-			isBlocked = this.password.isBlocked(password);
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		boolean passwordBlocked = false;
+		boolean ipBlocked = false;
+		boolean usernameBlocked = false;
+		boolean sqanswerBlocked = false;
+		boolean idBlocked = false;
+		
+		if (null != password){
+			try {
+				passwordBlocked = this.password.isBlocked(password);
+			} catch (IllegalStateException | InvalidInputException e) {
+				e.printStackTrace();
+			}
 		}
+		if (null != ip){
+			try {
+				ipBlocked = this.ip.isBlocked(ip);
+			} catch (IllegalStateException | InvalidInputException e) {
+				e.printStackTrace();
+			}
+		}
+		if (null != username){
+			try {
+				usernameBlocked = this.username.isBlocked(username);
+			} catch (IllegalStateException | InvalidInputException e) {
+				e.printStackTrace();
+			}
+		}
+		if (null != sqanswer){
+			try {
+				sqanswerBlocked = this.sqanswer.isBlocked(sqanswer);
+			} catch (IllegalStateException | InvalidInputException e) {
+				e.printStackTrace();
+			}
+		}
+		if (null != id){
+			try {
+				idBlocked = this.id.isBlocked(id);
+			} catch (IllegalStateException | InvalidInputException e) {
+				e.printStackTrace();
+			}
+		}
+		isBlocked = passwordBlocked && ipBlocked && usernameBlocked && sqanswerBlocked && idBlocked;
+		
+		request.setAttribute("blocked", isBlocked);
 	}
 
 }

@@ -14,22 +14,27 @@ class HtmlContent extends JFrame {
 		          "<p align=\"center\">" + "Hit count: " + 0 + "</p>" +
 		          "<p align=\"center\">" + "Blocked count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Allowed count:" + 0 + "</p>" +
+		          "<p align=\"center\">" + "Records Stored:" + 0 +"</p>" +
 		          "<h1 align=\"center\">" + "Password Stats:" + "</h1>" +
 		          "<p align=\"center\">" + "Hit count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Blocked count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Allowed count:" + 0 + "</p>" +
+		          "<p align=\"center\">" + "Records Stored:" + 0 +"</p>" +
 		          "<h1 align=\"center\">" + "Username Stats:" + "</h1>" +
 		          "<p align=\"center\">" + "Hit count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Blocked count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Allowed count:" + 0 + "</p>" +
+		          "<p align=\"center\">" + "Records Stored:" + 0 +"</p>" +
 		          "<h1 align=\"center\">" + "Ip Stats:" + "</h1>\n" +
 		          "<p align=\"center\">" + "Hit count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Blocked count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Allowed count:" + 0 + "</p>" +
+		          "<p align=\"center\">" + "Records Stored:" + 0 +"</p>" +
 		          "<h1 align=\"center\">" + "Security Question Stats:" + "</h1>" +
 		          "<p align=\"center\">" + "Hit count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Blocked count:" + 0 + "</p>" +
 		          "<p align=\"center\">" + "Allowed count:" + 0 + "</p>" +
+		          "<p align=\"center\">" + "Records Stored:" + 0 +"</p>" +
 		          "</body>"+
 		          "</html>";
 				JEditorPane ed1=new JEditorPane("text/html",html); 
