@@ -21,10 +21,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked("TestPassword");
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -40,10 +40,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked("TestPassword");
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -59,10 +59,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked("TestPassword");
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -70,16 +70,16 @@ public class AllTests {
 		try {
 			Thread.sleep(7000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		try {
 			blocked = password.isBlocked("TestPassword");
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		assertEquals(false, blocked);
@@ -94,10 +94,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked("TestPassword");
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -105,16 +105,16 @@ public class AllTests {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		try {
 			blocked = password.isBlocked("TestPassword");
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		assertEquals(true, blocked);
@@ -129,10 +129,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked(123456);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -148,10 +148,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked(123456);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -167,10 +167,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked(123456);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -178,16 +178,16 @@ public class AllTests {
 		try {
 			Thread.sleep(7000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		try {
 			blocked = password.isBlocked(123456);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		assertEquals(false, blocked);
@@ -202,10 +202,10 @@ public class AllTests {
 			try {
 				blocked = password.isBlocked(123456);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -213,16 +213,16 @@ public class AllTests {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		try {
 			blocked = password.isBlocked(123456);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		assertEquals(true, blocked);
@@ -241,10 +241,10 @@ public class AllTests {
 		try {
 			noTrawling.isBlocked(123456);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		}
@@ -267,10 +267,10 @@ public class AllTests {
 		try {
 			noTrawling.isBlocked("123456");
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		}
@@ -293,10 +293,10 @@ public class AllTests {
 		try {
 			noTrawling.isBlocked(123456 + i);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		}
@@ -319,10 +319,10 @@ public class AllTests {
 		try {
 			noTrawling.isBlocked("123456" + i);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		}
@@ -340,10 +340,10 @@ public class AllTests {
 			try {
 				password.isBlocked("TestPassword");
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -353,7 +353,7 @@ public class AllTests {
 		try {
 			Thread.sleep(11000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		password.cleanUp();
@@ -368,10 +368,9 @@ public class AllTests {
 			try {
 				password.isBlocked(123456);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (InvalidInputException e) {
-				// TODO Auto-generated catch block
+				Assert.fail();
 				e.printStackTrace();
 			}
 		}
@@ -381,7 +380,7 @@ public class AllTests {
 		try {
 			Thread.sleep(11000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
 		password.cleanUp();

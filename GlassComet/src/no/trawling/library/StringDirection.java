@@ -9,7 +9,7 @@ import org.eclipse.jdt.core.compiler.InvalidInputException;
 
 public class StringDirection extends Direction{
 	
-	ConcurrentHashMap<String, Long> values;
+	private ConcurrentHashMap<String, Long> values;
 	
 	public StringDirection(int windowSize, int maxHits, int timePenalty){
 		

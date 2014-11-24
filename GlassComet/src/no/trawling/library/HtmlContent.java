@@ -49,31 +49,31 @@ class HtmlContent extends JFrame {
 	          "<p align=\"center\">" + "Hit count: " + id.getHitsCount() + "</p>" +
 	          "<p align=\"center\">" + "Blocked count:" + id.getBlocksCount() + "</p>" +
 	          "<p align=\"center\">" + "Allowed count:" + (id.getHitsCount() - id.getBlocksCount()) + "</p>" +
-	          "<p align=\"center\">" + "Records Stored:" + id.values.size()+"</p>" +
+	          "<p align=\"center\">" + "Records Stored:" + id.getNumberOfRecords()+"</p>" +
 	          
 	          "<h1 align=\"center\">" + "Password Stats:" + "</h1>" +
 	          "<p align=\"center\">" + "Hit count:" + password.getHitsCount() + "</p>" +
 	          "<p align=\"center\">" + "Blocked count:" + password.getBlocksCount() + "</p>" +
 	          "<p align=\"center\">" + "Allowed count:" + (password.getHitsCount() - password.getBlocksCount()) + "</p>" +
-	          "<p align=\"center\">" + "Records Stored:" + password.values.size()+"</p>" +
+	          "<p align=\"center\">" + "Records Stored:" + password.getNumberOfRecords()+"</p>" +
 	          
 	          "<h1 align=\"center\">" + "Username Stats:" + "</h1>" +
 	          "<p align=\"center\">" + "Hit count:" + username.getHitsCount() + "</p>" +
 	          "<p align=\"center\">" + "Blocked count:" + username.getBlocksCount() + "</p>" +
 	          "<p align=\"center\">" + "Allowed count:" + (username.getHitsCount() - username.getBlocksCount()) + "</p>" +
-	          "<p align=\"center\">" + "Records Stored:" + username.values.size()+"</p>" +
+	          "<p align=\"center\">" + "Records Stored:" + username.getNumberOfRecords()+"</p>" +
 	          
 	          "<h1 align=\"center\">" + "Ip Stats:" + "</h1>" +
 	          "<p align=\"center\">" + "Hit count:" + ip.getHitsCount() + "</p>" +
 	          "<p align=\"center\">" + "Blocked count:" + ip.getBlocksCount() + "</p>" +
 	          "<p align=\"center\">" + "Allowed count:" + (ip.getHitsCount() - ip.getBlocksCount()) + "</p>" +
-	          "<p align=\"center\">" + "Records Stored:" + ip.values.size()+"</p>" +
+	          "<p align=\"center\">" + "Records Stored:" + ip.getNumberOfRecords()+"</p>" +
 	      
 	          "<h1 align=\"center\">" + "Security Question Stats:" + "</h1>" +
 	          "<p align=\"center\">" + "Hit count:" + sqanswer.getHitsCount() + "</p>" +
 	          "<p align=\"center\">" + "Blocked count:" + sqanswer.getBlocksCount() + "</p>" +
 	          "<p align=\"center\">" + "Allowed count:" + (sqanswer.getHitsCount() - sqanswer.getBlocksCount()) + "</p>" +
-	          "<p align=\"center\">" + "Records Stored:" + sqanswer.values.size()+"</p>" +
+	          "<p align=\"center\">" + "Records Stored:" + sqanswer.getNumberOfRecords()+"</p>" +
 	          "</body>"+
 	          "</html>";
 			JEditorPane ed1=new JEditorPane("text/html",html); 
