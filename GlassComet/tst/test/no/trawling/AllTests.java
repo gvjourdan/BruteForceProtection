@@ -333,7 +333,7 @@ public class AllTests {
 	}
 	
 	@Test
-	public void testStringDirectionCleanup(){
+	public void testStringDirectionCleanupAfterBlocked(){
 		StringDirection password = new StringDirection(5, 5, 5);
 		int x = 0;
 		while (x++ < 7){
@@ -349,7 +349,6 @@ public class AllTests {
 		}
 		password.cleanUp();
 		assertEquals(1, password.getNumberOfRecords());
-		//TODO Why 11 seconds???
 		try {
 			Thread.sleep(11000);
 		} catch (InterruptedException e) {
@@ -361,7 +360,7 @@ public class AllTests {
 	}
 	
 	@Test
-	public void testIntegerDirectionCleanup(){
+	public void testIntegerDirectionCleanupAfterBlocked(){
 		IntegerDirection password = new IntegerDirection(5, 5, 5);
 		int x = 0;
 		while (x++ < 7){
@@ -376,9 +375,61 @@ public class AllTests {
 		}
 		password.cleanUp();
 		assertEquals(1, password.getNumberOfRecords());
-		//TODO Why 11 seconds???
 		try {
 			Thread.sleep(11000);
+		} catch (InterruptedException e) {
+			Assert.fail();
+			e.printStackTrace();
+		}
+		password.cleanUp();
+		assertEquals(0, password.getNumberOfRecords());
+	}
+	
+	@Test
+	public void testStringDirectionCleanupNotBlocked(){
+		StringDirection password = new StringDirection(5, 5, 5);
+		int x = 0;
+		while (x++ < 2){
+			try {
+				password.isBlocked("TestPassword");
+			} catch (IllegalStateException e) {
+				Assert.fail();
+				e.printStackTrace();
+			} catch (InvalidInputException e) {
+				Assert.fail();
+				e.printStackTrace();
+			}
+		}
+		password.cleanUp();
+		assertEquals(1, password.getNumberOfRecords());
+		try {
+			Thread.sleep(6000);
+		} catch (InterruptedException e) {
+			Assert.fail();
+			e.printStackTrace();
+		}
+		password.cleanUp();
+		assertEquals(0, password.getNumberOfRecords());
+	}
+	
+	@Test
+	public void testIntegerDirectionCleanupNotBlocked(){
+		IntegerDirection password = new IntegerDirection(5, 5, 5);
+		int x = 0;
+		while (x++ < 2){
+			try {
+				password.isBlocked(123456);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (InvalidInputException e) {
+				Assert.fail();
+				e.printStackTrace();
+			}
+		}
+		password.cleanUp();
+		assertEquals(1, password.getNumberOfRecords());
+		try {
+			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			Assert.fail();
 			e.printStackTrace();
