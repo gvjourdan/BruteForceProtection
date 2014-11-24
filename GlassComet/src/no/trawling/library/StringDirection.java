@@ -1,4 +1,4 @@
-package no.trawling;
+package no.trawling.library;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -7,13 +7,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
-public class IntegerDirection extends Direction {
+public class StringDirection extends Direction{
 	
-	ConcurrentHashMap<Integer, Long> values;
+	ConcurrentHashMap<String, Long> values;
 	
-	public IntegerDirection(int windowSize, int maxHits, int timePenalty){
+	public StringDirection(int windowSize, int maxHits, int timePenalty){
 		
-		values = new ConcurrentHashMap<Integer,Long>();
+		values = new ConcurrentHashMap<String,Long>();
 		this.windowSize = windowSize;
 		this.maxHits = maxHits;
 		this.timePenalty = timePenalty;
@@ -23,13 +23,13 @@ public class IntegerDirection extends Direction {
 		return values.size();
 	}
 	
-	public boolean isBlocked(Integer key) throws InvalidInputException, IllegalStateException{
+	public boolean isBlocked(String key) throws InvalidInputException, IllegalStateException{
 		boolean isBlocked = false;
 		if (0 == windowSize || 0 == maxHits){
 			//These values can't be zero
 			throw new IllegalStateException();
 		}
-		else if(null == key){
+		else if(null == key || key.equals("")){
 			//Value supplied isn't valid
 			throw new InvalidInputException();
 		}
@@ -42,12 +42,12 @@ public class IntegerDirection extends Direction {
 	}
 	
 	public void cleanUp(){
-		Iterator<Entry<Integer, Long>> it = values.entrySet().iterator();
+		Iterator<Entry<String, Long>> it = values.entrySet().iterator();
 		Long currentTime = System.currentTimeMillis() / 1000l;
 		Long windowTail = currentTime - windowSize;
 		
 		while (it.hasNext()) {
-	        Map.Entry<Integer, Long> pairs = (Map.Entry<Integer, Long>)it.next();
+	        Map.Entry<String, Long> pairs = (Map.Entry<String, Long>)it.next();
 	        if ((Long)pairs.getValue() < windowTail){
 	        	values.remove(pairs.getKey());
 		        it.remove(); // avoids a ConcurrentModificationException
@@ -55,7 +55,7 @@ public class IntegerDirection extends Direction {
 	    }
 	}
 	
-	private boolean updateRecord(Integer key){
+	private boolean updateRecord(String key){
 		
 		boolean isBlocked = false;
 		Long currentTime = System.currentTimeMillis() / 1000l;
@@ -65,6 +65,7 @@ public class IntegerDirection extends Direction {
 		
 		if (values.containsKey(key)){
 			lastHit = values.get(key);
+			
 			if (null == lastHit){
 				values.put(key, currentTime - windowSize + windowSlide);
 				isBlocked = false;

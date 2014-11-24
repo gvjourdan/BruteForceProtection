@@ -1,4 +1,4 @@
-package no.trawling;
+package no.trawling.library;
 
 public class Direction {
 	//time in seconds

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 
-import no.trawling.*;
+import no.trawling.library.*;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 import org.junit.*;

@@ -1,4 +1,4 @@
-package no.trawling;
+package no.trawling.library;
 
 import java.io.IOException;
 import java.io.InputStream;

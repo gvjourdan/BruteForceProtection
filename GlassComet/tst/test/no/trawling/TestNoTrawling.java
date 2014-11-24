@@ -3,7 +3,7 @@ package test.no.trawling;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 
-import no.trawling.NoTrawling;
+import no.trawling.library.NoTrawling;
 
 public class TestNoTrawling {
 	public static void main(String [] args){

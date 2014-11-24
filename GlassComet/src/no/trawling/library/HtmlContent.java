@@ -1,4 +1,4 @@
-package no.trawling;
+package no.trawling.library;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;

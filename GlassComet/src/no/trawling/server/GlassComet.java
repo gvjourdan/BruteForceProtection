@@ -1,4 +1,4 @@
-package no.trawling;
+package no.trawling.server;
 
 
 import java.io.IOException;
@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import no.trawling.library.StringDirection;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
